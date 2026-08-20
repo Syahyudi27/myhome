@@ -15,6 +15,10 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Schemas\Components\Fieldset;
+use Filament\Forms\Components\Select;
 
 class HouseResource extends Resource
 {
@@ -24,7 +28,37 @@ class HouseResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return HouseForm::configure($schema);
+        return $schema
+            ->components([
+                Fieldset::make('Informasi Kategori')
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('name')
+                            ->maxLength(255)
+                            ->required(),
+
+                        TextInput::make('price')
+                            ->required()
+                            ->numeric()
+                            ->prefix('IDR'),
+
+                        Select::make('certificate')
+                            ->options([
+                                'SHM' => 'SHM',
+                                'SHGB' => 'SHGB',
+                            ]),
+
+                        FileUpload::make('thumnail')
+                            ->required()
+                            ->image()
+                            ->acceptedFileTypes([
+                                'image/jpeg',
+                                'image/png',
+                                'image/webp',
+
+                            ])
+                    ])
+            ]);
     }
 
     public static function table(Table $table): Table
