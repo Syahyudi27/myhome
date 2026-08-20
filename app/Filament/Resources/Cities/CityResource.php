@@ -15,6 +15,10 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Schemas\Components\Fieldset;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+
 
 class CityResource extends Resource
 {
@@ -24,7 +28,27 @@ class CityResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return CityForm::configure($schema);
+        return $schema
+            ->components([
+                Fieldset::make('Informasi Kategori')
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('name')
+                            ->maxLength(255)
+                            ->required()
+                            ->columnSpanFull(),
+                        FileUpload::make('photo')
+                            ->required()
+                            ->image()
+                            ->acceptedFileTypes([
+                                'image/jpeg',
+                                'image/png',
+                                'image/webp',
+
+                            ])
+                            ->columnSpanFull(),
+                    ])
+            ]);
     }
 
     public static function table(Table $table): Table

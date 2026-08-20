@@ -10,7 +10,11 @@ class Category extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['house_id','facility_id'];
+   protected $fillable = [
+    'name',
+    'slug',
+    'photo',
+];
 
     public function setNameAttribute($value)
     {

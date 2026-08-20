@@ -15,6 +15,9 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Schemas\Components\Fieldset;
 
 class BankResource extends Resource
 {
@@ -24,7 +27,27 @@ class BankResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return BankForm::configure($schema);
+        return $schema
+            ->components([
+                Fieldset::make('Informasi Kategori')
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('name')
+                            ->maxLength(255)
+                            ->required()
+                            ->columnSpanFull(),
+                        FileUpload::make('photo')
+                            ->required()
+                            ->image()
+                            ->acceptedFileTypes([
+                                'image/jpeg',
+                                'image/png',
+                                'image/webp',
+
+                            ])
+                            ->columnSpanFull(),
+                    ])
+            ]);
     }
 
     public static function table(Table $table): Table

@@ -19,7 +19,7 @@ class UsersTable
                 //
             ])
             ->filters([
-                TrashedFilter::make(),
+                //TrashedFilter::make(),
             ])
             ->recordActions([
                 EditAction::make(),

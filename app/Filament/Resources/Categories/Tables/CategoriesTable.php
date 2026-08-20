@@ -9,6 +9,9 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\ViewAction;
 
 class CategoriesTable
 {
@@ -16,13 +19,16 @@ class CategoriesTable
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('photo'),
+                TextColumn::make('name')
+                ->searchable(),
             ])
             ->filters([
                 TrashedFilter::make(),
             ])
             ->recordActions([
                 EditAction::make(),
+                ViewAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
