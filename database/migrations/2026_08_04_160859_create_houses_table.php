@@ -20,14 +20,16 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('bedroom');
             $table->integer('bathroom');
+            $table->string('certificate');
             $table->integer('electric');
             $table->integer('land_area');
             $table->integer('building_area');
 
-            $table->foreignId('category_id')->constrained()->casecadeOnDelete();
-            $table->foreignId('city_id')->constrained()->casecadeOnDelete();
+            
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-            $table->softDeletes();;
+            $table->softDeletes(); // Hapus satu titik koma di sini
         });
     }
 

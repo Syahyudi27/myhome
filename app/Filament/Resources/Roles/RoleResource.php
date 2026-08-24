@@ -16,6 +16,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Spatie\Permission\Models\Role as ModelsRole;
+use Filament\Schemas\Components\Fieldset;
+use Filament\Forms\Components\TextInput;
 
 class RoleResource extends Resource
 {
@@ -25,7 +27,16 @@ class RoleResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return RoleForm::configure($schema);
+        return $schema
+            ->components([
+                Fieldset::make('Informasi Kategori')
+                ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('name')
+                            ->maxLength(255)
+                            ->required(),
+                    ])
+            ]);
     }
 
     public static function table(Table $table): Table

@@ -9,6 +9,8 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 
 class HousesTable
 {
@@ -16,7 +18,13 @@ class HousesTable
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('thumbnail'),
+
+                TextColumn::make('name')
+                    ->searchable(),
+
+                TextColumn::make('category.name'),
+                TextColumn::make('city.name'),
             ])
             ->filters([
                 TrashedFilter::make(),

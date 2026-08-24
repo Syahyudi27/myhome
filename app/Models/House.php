@@ -13,7 +13,7 @@ class House extends Model
     protected $fillable = [
         'name',
         'slug',
-        'thumbail',
+        'thumbnail',
         'about',
         'price',
         'bedroom',

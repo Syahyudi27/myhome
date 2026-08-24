@@ -30,6 +30,7 @@ class BankResource extends Resource
         return $schema
             ->components([
                 Fieldset::make('Informasi Kategori')
+                ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
                             ->maxLength(255)
