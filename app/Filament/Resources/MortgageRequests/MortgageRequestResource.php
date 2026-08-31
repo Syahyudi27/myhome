@@ -20,6 +20,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Schemas\Components\Grid;
+use Filament\Forms\Components\TextInput;
 
 class MortgageRequestResource extends Resource
 {
@@ -72,6 +73,71 @@ class MortgageRequestResource extends Resource
                                                 $set('duration', $interest->duration);
                                             }
                                         }),
+
+                                    // Bank Name Field (Read-Only)
+                                    TextInput::make('bank_name')
+                                        ->label('Bank Name')
+                                        ->required()
+                                        ->readOnly(),
+
+                                    // Duration Field (Read-Only)
+                                    TextInput::make('duration')
+                                        ->label('Duration in Years')
+                                        ->required()
+                                        ->readOnly()
+                                        ->numeric()
+                                        ->suffix('Years'),
+
+                                    // Interest Field (Read-Only)
+                                    TextInput::make('interest')
+                                        ->label('Interest Rate')
+                                        ->required()
+                                        ->readOnly()
+                                        ->numeric()
+                                        ->suffix('%'),
+
+                                    TextInput::make('house_price')
+                                        ->label('House Price')
+                                        ->required()
+                                        ->readOnly()
+                                        ->numeric()
+                                        ->prefix('IDR'),
+
+                                    Select::make('dp_percentage')
+                                        ->label('Down Payment ( % )')
+                                        ->options([
+                                            5 => '5%',
+                                            10 => '10%',
+                                            15 => '15%',
+                                            20 => '20%',
+                                            40 => '40%',
+                                            50 => '50%',
+                                            60 => '60%',
+                                            80 => '80%',
+                                        ])
+                                        ->required()
+                                        ->live()
+                                        ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                            $housePrice = $get('house_price') ?? 0;
+                                            $dpAmount = ($state / 100) * $housePrice; // Calculate down payment amount
+                                            $loanAmount = max($housePrice - $dpAmount, 0); // Calculate loan amount
+
+                                            $set('dp_total_amount', round($dpAmount));
+                                            $set('loan_total_amount', round($loanAmount));
+                                        }),
+
+                                    TextInput::make('dp_total_amount')
+                                        ->label('Down Payment Amount')
+                                        ->readOnly()
+                                        ->numeric()
+                                        ->prefix('IDR'),
+
+                                    TextInput::make('loan_total_amount')
+                                        ->label('Loan Amount')
+                                        ->readOnly()
+                                        ->required()
+                                        ->numeric()
+                                        ->prefix('IDR'),
 
                                 ])
                         ])
