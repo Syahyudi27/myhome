@@ -16,7 +16,7 @@ class MortgageRequestsTable
     {
         return $table
             ->columns([
-                //
+                
             ])
             ->filters([
                 TrashedFilter::make(),

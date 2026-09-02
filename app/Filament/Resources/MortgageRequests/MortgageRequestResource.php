@@ -9,7 +9,9 @@ use App\Filament\Resources\MortgageRequests\Schemas\MortgageRequestForm;
 use App\Filament\Resources\MortgageRequests\Tables\MortgageRequestsTable;
 use App\Models\Interest;
 use App\Models\MortgageRequest;
+use App\Models\User;
 use BackedEnum;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Wizard;
@@ -53,6 +55,9 @@ class MortgageRequestResource extends Resource
 
                                     Select::make('interest_id')
                                         ->label('Interest in %')
+                                        ->validationMessages([
+                                            'required' => "Durasi Harus Diisi"
+                                        ])
                                         ->options(function (callable $get) {
                                             $houseId = $get('house_id');
                                             if ($houseId) {
@@ -124,6 +129,29 @@ class MortgageRequestResource extends Resource
 
                                             $set('dp_total_amount', round($dpAmount));
                                             $set('loan_total_amount', round($loanAmount));
+
+                                            //calculate mounthly payment
+                                            $durationYears = $get('duration') ?? 0;
+                                            $interestRate = $get('interest') ?? 0;
+
+                                            if ($durationYears > 0 && $loanAmount > 0 && $interestRate > 0) {
+                                                $totalPayments = $durationYears * 12; // Total number of payments
+                                                $monthlyInterestRate = $interestRate / 100 / 12; // Monthly interest rate
+
+                                                // Amortization formula
+                                                $numerator = $loanAmount * $monthlyInterestRate * pow(1 + $monthlyInterestRate, $totalPayments);
+                                                $denominator = pow(1 + $monthlyInterestRate, $totalPayments) - 1;
+                                                $monthlyPayment = $denominator > 0 ? $numerator / $denominator : 0;
+
+                                                $set('monthly_amount', round($monthlyPayment));
+
+                                                /** @var int|float $loanInterestTotalAmount */
+                                                $loanInterestTotalAmount = $monthlyPayment * $totalPayments;
+                                                $set('loan_interest_total_amount', round($loanInterestTotalAmount));
+                                            } else {
+                                                $set('monthly_amount', 0);
+                                                $set('loan_interest_total_amount', 0);
+                                            }
                                         }),
 
                                     TextInput::make('dp_total_amount')
@@ -139,8 +167,73 @@ class MortgageRequestResource extends Resource
                                         ->numeric()
                                         ->prefix('IDR'),
 
+                                    TextInput::make('monthly_amount')
+                                        ->label('Mouthly Payemnt')
+                                        ->readOnly()
+                                        ->required()
+                                        ->numeric()
+                                        ->prefix('IDR'),
+
+                                    TextInput::make('loan_interest_total_amount')
+                                        ->label('Total Payment Amount')
+                                        ->readOnly()
+                                        ->numeric()
+                                        ->prefix('IDR')
+
+
                                 ])
-                        ])
+                        ]),
+
+                    Step::make('Customer Information')
+                        ->schema([
+                            Select::make("Customer Information")
+                                ->relationship('customer', 'email')
+                                ->searchable()
+                                ->preload()
+                                ->required()
+                                ->live()
+                                ->afterStateUpdated(function ($state, callable $set) {
+                                    $user = User::find($state);
+                                    $name = $user->name;
+                                    $email = $user->email;
+                                    $set('name', $name);
+                                    $set('email', $email);
+                                })
+                                ->afterStateHydrated(function ($state, callable $set) {
+                                    $userId = $state;
+                                    if ($userId) {
+                                        $user = User::find($userId);
+                                        $name = $user->name;
+                                        $email = $user->email;
+                                        $set('name', $name);
+                                        $set('email', $email);
+                                    }
+                                }),
+                            TextInput::make('name')
+                                ->required()
+                                ->readOnly()
+                                ->maxLength(255),
+
+                            TextInput::make('email')
+                                ->required()
+                                ->readOnly()
+                                ->maxLength(255),
+                        ]),
+
+                    Step::make('BANK APPROVEL')
+                        ->schema([
+                            FileUpload::make('documents')
+                                ->acceptedFileTypes(['application/pdf']),
+                            Select::make('status')
+                                ->label('Approval Status')
+                                ->options([
+                                    'wating for bank' => 'Waiting for Bank',
+                                    'approved' => 'Approved',
+                                    'reject' => 'Reject'
+                                ])
+                                ->required(),
+                            
+                        ]),
                 ])
                     ->columnSpan('full')
                     ->columns(1)
