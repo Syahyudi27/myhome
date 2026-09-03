@@ -5,6 +5,7 @@ namespace App\Filament\Resources\MortgageRequests;
 use App\Filament\Resources\MortgageRequests\Pages\CreateMortgageRequest;
 use App\Filament\Resources\MortgageRequests\Pages\EditMortgageRequest;
 use App\Filament\Resources\MortgageRequests\Pages\ListMortgageRequests;
+use App\Filament\Resources\MortgageRequests\RelationManagers\InstallmentsRelationManager;
 use App\Filament\Resources\MortgageRequests\Schemas\MortgageRequestForm;
 use App\Filament\Resources\MortgageRequests\Tables\MortgageRequestsTable;
 use App\Models\Interest;
@@ -186,7 +187,7 @@ class MortgageRequestResource extends Resource
 
                     Step::make('Customer Information')
                         ->schema([
-                            Select::make("Customer Information")
+                            Select::make("user_id")
                                 ->relationship('customer', 'email')
                                 ->searchable()
                                 ->preload()
@@ -248,7 +249,7 @@ class MortgageRequestResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            InstallmentsRelationManager::class,
         ];
     }
 
