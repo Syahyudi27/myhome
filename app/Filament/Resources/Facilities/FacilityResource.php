@@ -9,6 +9,7 @@ use App\Filament\Resources\Facilities\Schemas\FacilityForm;
 use App\Filament\Resources\Facilities\Tables\FacilitiesTable;
 use App\Models\Facility;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,7 +24,9 @@ class FacilityResource extends Resource
 {
     protected static ?string $model = Facility::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-wrench-screwdriver';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Products';
 
     public static function form(Schema $schema): Schema
     {

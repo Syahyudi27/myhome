@@ -12,6 +12,7 @@ use App\Models\Interest;
 use App\Models\MortgageRequest;
 use App\Models\User;
 use BackedEnum;
+use UnitEnum;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
@@ -29,7 +30,9 @@ class MortgageRequestResource extends Resource
 {
     protected static ?string $model = MortgageRequest::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-banknotes';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Transaction';
 
     public static function form(Schema $schema): Schema
     {

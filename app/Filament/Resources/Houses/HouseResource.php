@@ -9,6 +9,7 @@ use App\Filament\Resources\Houses\Schemas\HouseForm;
 use App\Filament\Resources\Houses\Tables\HousesTable;
 use App\Models\House;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -27,7 +28,9 @@ class HouseResource extends Resource
 {
     protected static ?string $model = House::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-home-modern';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Products';
 
     public static function form(Schema $schema): Schema
     {

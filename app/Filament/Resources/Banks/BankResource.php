@@ -9,6 +9,7 @@ use App\Filament\Resources\Banks\Schemas\BankForm;
 use App\Filament\Resources\Banks\Tables\BanksTable;
 use App\Models\Bank;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,7 +24,9 @@ class BankResource extends Resource
 {
     protected static ?string $model = Bank::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBanknotes;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Vendors';
 
     public static function form(Schema $schema): Schema
     {
@@ -37,6 +40,7 @@ class BankResource extends Resource
                             ->required()
                             ->columnSpanFull(),
                         FileUpload::make('photo')
+                        ->disk('public')
                             ->required()
                             ->image()
                             ->acceptedFileTypes([

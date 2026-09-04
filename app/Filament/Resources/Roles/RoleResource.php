@@ -9,6 +9,7 @@ use App\Filament\Resources\Roles\Schemas\RoleForm;
 use App\Filament\Resources\Roles\Tables\RolesTable;
 use App\Models\Role;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,7 +24,9 @@ class RoleResource extends Resource
 {
     protected static ?string $model = ModelsRole::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shield-check';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Management';
 
     public static function form(Schema $schema): Schema
     {

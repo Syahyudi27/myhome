@@ -9,6 +9,7 @@ use App\Filament\Resources\Interests\Schemas\InterestForm;
 use App\Filament\Resources\Interests\Tables\InterestsTable;
 use App\Models\Interest;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -22,7 +23,9 @@ class InterestResource extends Resource
 {
     protected static ?string $model = Interest::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChartBar;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Vendors';
 
     public static function form(Schema $schema): Schema
     {
