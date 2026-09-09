@@ -16,7 +16,7 @@ class HouseService
         ];
     }
 
-    public function searchHouses($filters)
+    public function searchHouses(array $filters) : array
     {
         $query = House::query();
 
@@ -34,5 +34,11 @@ class HouseService
         $city = City::findOrFail($filters['city'] ?? null);
 
         return compact('houses', 'category', 'city');
+    }
+
+    public function getHouseDetails (House $house) : House
+    {
+        $house->load(['photos', 'facilities', 'facilities.facility']);
+        return $house;
     }
 }
