@@ -27,16 +27,38 @@ class MortgageRequest extends Model
     ];
 
     public function customer()
-{
-    return $this->belongsTo(User::class, 'user_id');
-}
-public function house()
-{
-    return $this->belongsTo(House::class, 'house_id');
-}
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function house()
+    {
+        return $this->belongsTo(House::class, 'house_id');
+    }
 
-public function installments()
-{
-    return $this->hasMany(Installment::class);
-}
+    public function installments()
+    {
+        return $this->hasMany(Installment::class);
+    }
+
+    public function getRemainingLoanAmountAttribute()
+    {
+        // Check if there are any installments
+        if ($this->installments()->count() === 0) {
+            // Default to the total loan interest amount if no installments exist
+            return $this->loan_interest_total_amount;
+        }
+
+        // Calculate the total paid amount from installments
+        $totalPaid = $this->installments()
+            ->where('is_paid', true)
+            ->sum('sub_total_amount');
+
+        // Subtract the total paid from the total loan amount
+        return max($this->loan_interest_total_amount - $totalPaid, 0);
+    }
+
+    public function getMortgagerequest($mortgageRequestId)
+    {
+        return MortgageRequest::findOrFail($mortgageRequestId);
+    }
 }

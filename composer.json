@@ -12,6 +12,7 @@
         "laravel/breeze": "^2.4",
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
+        "midtrans/midtrans-php": "^2.6",
         "spatie/laravel-permission": "^8.3",
         "torgodly/html2media": "^2.1"
     },

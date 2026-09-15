@@ -3,12 +3,13 @@
 namespace App\Services;
 
 use App\Models\House;
+use App\Models\Installment;
 use App\Models\Interest;
 use App\Models\MortgageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MortgageService 
+class MortgageService
 {
     public function handleInterestRequest(Request $request)
     {
@@ -58,7 +59,7 @@ class MortgageService
 
     public function uploadDocument(Request $request): ?string
     {
-        if ($request->hasFile('documents')){
+        if ($request->hasFile('documents')) {
             return $request->file('documents')->store('documents', 'public');
         }
         return null;
@@ -97,7 +98,43 @@ class MortgageService
     public function getUserMortgage($userId)
     {
         return MortgageRequest::with(['house', 'house.city', 'house.category'])
-        ->where('user_id', $userId)
-        ->get();
+            ->where('user_id', $userId)
+            ->get();
+    }
+
+    public function getMorgateDetails(MortgageRequest $mortgageRequest)
+    {
+        $mortgageRequest->load(['house.city', 'house.category', 'installements']);
+        $monthlyPayment = $mortgageRequest->monthly_amount;
+        $insurance = 900000;
+        $totalTaxAmount = round($monthlyPayment * 0.11);
+
+        return compact('mortageRequest', 'totalTaxAmount', 'insurance');
+    }
+
+    public function getInstallementDetails(Installment $installment)
+    {
+        return $installment->load(['mortagageRequest.city']);
+    }
+
+    public function getInstallmentPaymentDetails(MortgageRequest $mortgageRequest)
+    {
+        $remainingLoanAmount = $mortgageRequest->remaining_loan_amount;
+        $mortgageRequest->load(['house.city', 'house.category', 'installments']);
+        $monthlyPayment = $mortgageRequest->monthly_amount;
+        $insurance = 900000;
+        $totalTaxAmount = round($monthlyPayment * 0.11);
+        $grandTotalAmount = $monthlyPayment + $insurance + $totalTaxAmount;
+        $remainingLoanAmountAfterPayment = $remainingLoanAmount - $monthlyPayment;
+
+        return compact(
+            'mortgageRequest',
+            'grandTotalAmount',
+            'monthlyPayment',
+            'totalTaxAmount',
+            'insurance',
+            'remainingLoanAmount',
+            'remainingLoanAmountAfterPayment'
+        );
     }
 }
