@@ -36,7 +36,7 @@ class HouseService
         return compact('houses', 'category', 'city');
     }
 
-    public function getHouseDetails (House $house) : House
+    public function getHouseDetails (House $house)
     {
         $house->load(['photos', 'facilities', 'facilities.facility']);
         return $house;
