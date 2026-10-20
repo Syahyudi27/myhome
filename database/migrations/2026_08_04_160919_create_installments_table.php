@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,14 +14,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mortgage_request_id')->constrained()->cascadeOnDelete();
             $table->integer('no_of_payment');
-            $table->integer('total_tax_amount');
-            $table->integer('grand_total_amount');
-            $table->integer('sub_total_amount');
-            $table->integer('insurance_amount');
+            $table->unsignedBigInteger('total_tax_amount')->change();
+            $table->unsignedBigInteger('grand_total_amount')->change();
+            $table->unsignedBigInteger('sub_total_amount')->change();
+            $table->unsignedBigInteger('insurance_amount')->change();
             $table->string('proof')->nullable();
             $table->boolean('is_paid');
             $table->string('payment_type');
-            $table->integer('remaining_loan_amount');
+            $table->unsignedBigInteger('remaining_loan_amount')->change();
             $table->timestamps();
             $table->softDeletes();
         });

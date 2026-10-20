@@ -26,6 +26,11 @@ class House extends Model
         'city_id'
     ];
 
+    public function Agent()
+    {
+         return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;

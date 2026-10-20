@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('house_id')->constrained()->casecadeOnDelete();
             $table->foreignId('bank_id')->constrained()->casecadeOnDelete();
-            $table->integer('interest');
+            $table->decimal('interest',5,2)->default(0);
             $table->integer('duration');
             $table->timestamps();
                         $table->softDeletes();

@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable,HasRoles;
+    use HasFactory, Notifiable, HasRoles;
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -35,6 +35,11 @@ class User extends Authenticatable implements FilamentUser
         'phone',
         'photo',
     ];
+
+    public function creditTransactions()
+    {
+        return $this->hasMany(CreditTransaction::class);
+    }
 
     /**
      * Get the attributes that should be cast.

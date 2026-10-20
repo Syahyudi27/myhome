@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('phone');
             $table->string('photo')->nullable();
             $table->string('email')->unique();
+            $table->integer('credit_balance')->default(0);
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('role')->default('buyer');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
