@@ -33,14 +33,13 @@ class BankResource extends Resource
         return $schema
             ->components([
                 Fieldset::make('Informasi Kategori')
-                ->columnSpanFull()
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
                             ->maxLength(255)
                             ->required()
                             ->columnSpanFull(),
                         FileUpload::make('photo')
-                        ->disk('public')
                             ->required()
                             ->image()
                             ->acceptedFileTypes([
