@@ -137,4 +137,9 @@ class MortgageService
             'remainingLoanAmountAfterPayment'
         );
     }
+
+    public function getMortgegeRequest($mortgageRequestId)
+    {
+        return MortgageRequest::findOrFail($mortgageRequestId);
+    }
 }

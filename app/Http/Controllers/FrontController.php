@@ -8,6 +8,7 @@ use App\Models\MortgageRequest;
 use App\Services\HouseService;
 use App\Services\MortgageService;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class FrontController extends Controller
 {
@@ -21,6 +22,7 @@ class FrontController extends Controller
         $this->mortgageService = $mortgageService;
     }
 
+    //
     public function index()
     {
         $data = $this->houseService->getCategoriesAndCities();
@@ -31,6 +33,12 @@ class FrontController extends Controller
     {
         $data = $this->houseService->searchHouses($request->all());
         return view('front.search', $data);
+    }
+
+    public function category(Category $category)
+    {
+        $category->load(['house']);
+        return view('front.category', compact('category'));
     }
 
     public function details(House $house)
@@ -52,7 +60,11 @@ class FrontController extends Controller
 
     public function request_success()
     {
-        
+        $interest = $this->mortgageService->getInterestFromSession();
+        if (!$interest) {
+            return redirect()->route('front.index')->with('error','Invalid request, Please Try Again.');
+        }
+        return view('customer.mortagages.success_request', compact('intereset'));
     }
     
 }

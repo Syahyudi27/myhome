@@ -57,7 +57,7 @@ class MortgageRequest extends Model
         return max($this->loan_interest_total_amount - $totalPaid, 0);
     }
 
-    public function getMortgagerequest($mortgageRequestId)
+    public function getMortgageRequest($mortgageRequestId)
     {
         return MortgageRequest::findOrFail($mortgageRequestId);
     }
