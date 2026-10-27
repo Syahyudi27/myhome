@@ -10,6 +10,7 @@ use App\Models\House;
 use BackedEnum;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
+use Filament\Tables\Columns\Summarizers\Sum;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -17,8 +18,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Filament\Forms\Set;
-
+use Filament\Schemas\Components\Utilities\Set;
 // Import Component untuk Filament v4 / v5
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
@@ -45,7 +45,16 @@ class HouseResource extends Resource
                         Tab::make('Informasi Utama')
                             ->icon('heroicon-o-information-circle')
                             ->schema([
-                              Hidden::make('user_id'),
+                                Hidden::make('user_id'),
+
+                                FileUpload::make('thumbnail')
+                                            ->label('thumbnail')
+                                            ->image()
+                                            ->helperText('Contoh: Gunakan foto tampak depan rumah (facade) dengan pencahayaan terang/pagi hari. Hindari foto blur atau foto ruangan dalam.')    
+                                            ->directory('houses/thumbnail')
+                                            ->required()
+                                            ->columnSpanFull(),
+
 
                                 Select::make('category_id')
                                     ->label('Kategori Properti')
@@ -72,6 +81,8 @@ class HouseResource extends Resource
                                 TextInput::make('slug')
                                     ->label('Slug URL')
                                     ->required()
+                                    ->readOnly()
+                                    ->extraAttributes(['class' => 'bg-gray-100 text-gray-500 cursor-not-allowed'])
                                     ->unique(ignoreRecord: true),
 
                                 TextInput::make('price')
@@ -135,6 +146,7 @@ class HouseResource extends Resource
                                         'semi_furnished' => 'Semi Furnished',
                                         'fully_furnished' => 'Fully Furnished',
                                     ])
+                                    ->default('unfurnished')
                                     ->required(),
                             ])->columns(3),
 

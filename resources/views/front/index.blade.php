@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="{{ asset('css/output.css') }}" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </head>
     <body>
-        <nav class="relative w-full flex items-center justify-center px-[75px]">
-            <div class="fixed top-0 flex items-center justify-between w-full max-w-[1130px] rounded-3xl p-4 bg-white mt-[30px] z-30">
+        <nav class="relative w-full flex items-center justify-center px-[75px] sm:text-center">
+            <div class="fixed top-0 flex items-center justify-between w-full max-w-[1130px] rounded-xl p-4 bg-white mt-[30px] z-30">
                 <a href="index.html" class="flex shrink-0">
-                    <img src="{{ asset('assets/images/logos/logo-black.svg') }}"" alt="logo">
+                    <img src="{{ asset('assets/images/logos/logo-black.svg') }}" alt="logo">
                 </a>
                 <ul class="flex items-center gap-[30px]">
                     <li class="group active">
@@ -29,64 +29,56 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-3">
-                    <a href="signin.html" class="group rounded-full border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
+                    <a href="signin.html" class="group rounded-xl border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
                         <span class="font-semibold group-hover:text-white transition-all duration-300">Sign In</span>
                     </a>
-                    <a href="signup.html" class="group rounded-full border py-[14px] px-5 flex items-center bg-tedja-green">
-                        <span class="font-semibold">Sign Up</span>
+                    <a href="signup.html" class="group rounded-xl border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
+                        <span class="font-semibold group-hover:text-white transition-all duration-300">Sign Up</span>
                     </a>
                 </div>
             </div>
         </nav>
         <header class="relative flex flex-col w-full h-[712px]">
             <div class="absolute w-full h-[650px] overflow-hidden">
-                <img src="{{ asset('assets/images/backgrounds/hero-image.webp') }}"" class="w-full h-full object-cover" alt="hero image">
+                <img src="{{ asset('assets/images/backgrounds/hero-homi-image.webp') }}" class="w-full h-full object-cover" alt="hero image">
                 <div class="absolute w-full h-full bg-tedja-black/10"></div>
             </div>
-            <!-- <div class="relative flex flex-col mt-[244px] gap-5 items-center">
-                <p class="flex items-center gap-[6px] rounded-full py-[6px] px-3 bg-white bg-white border border-tedja-border">
-                    <img src="{{ asset('assets/images/icons/crown.svg') }}"" class="flex shrink-0 size-5" alt="icon">
-                    <span class="font-semibold text-sm">Top Well-Designed House by Anggga Ark</span>
-                </p>
-                <h1 class="font-extrabold text-[46px] leading-[60px] text-center text-white">You Deserve Big House</h1>
-                <p class="text-lg leading-8 text-center text-white">Dibangun oleh para professional sehingga memberikan<br>kecantikan sejati dan juga kehangatan bersama keluarga.</p>
-            </div> -->
-            <form action="search-result.html" class="relative flex w-full max-w-[940px] rounded-3xl p-5 gap-5 bg-white border border-tedja-border shadow-[0px_8px_30px_0px_#06092208] mx-auto mt-auto">
+            <form action="search-result.html" class="relative flex w-full max-w-[940px] rounded-xl p-5 gap-5 bg-white border border-tedja-border shadow-[0px_8px_30px_0px_#06092208] mx-auto mt-auto">
                 <div class="flex flex-col w-full max-w-[241px] gap-2 h-[84px]">
                     <p class="font-semibold">Location</p>
                     <label class="relative">
-                        <select name="" id="" class="appearance-none outline-none w-full rounded-full ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300" required>
+                        <select name="location_id" id="location_id" class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300" required>
                             <option value="" hidden disabled selected>Choose your location</option>
                             <option value="1">Jakarta Pusat</option>
                             <option value="1">Bandung</option>
                             <option value="1">Bekasi</option>
                         </select>
-                        <img src="{{ asset('assets/images/icons/arrow-down.svg') }}"" class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
+                        <img src="{{ asset('assets/images/icons/arrow-down.svg') }}" class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
                     </label>
                 </div>
                 <div class="flex flex-col w-full max-w-[227px] gap-2 h-[84px]">
                     <p class="font-semibold">Category</p>
                     <label class="relative">
-                        <select name="" id="" class="appearance-none outline-none w-full rounded-full ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300" required>
+                        <select name="category_id" id="category_id" class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300" required>
                             <option value="" hidden disabled selected>Select Category</option>
                             <option value="1">Man Made</option>
                             <option value="1">Beaches</option>
                         </select>
-                        <img src="{{ asset('assets/images/icons/arrow-down.svg') }}"" class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
+                        <img src="{{ asset('assets/images/icons/arrow-down.svg') }}" class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
                     </label>
                 </div>
                 <div class="flex flex-col w-full max-w-[232px] gap-2 h-[84px]">
                     <p class="font-semibold">Property</p>
                     <label class="relative">
-                        <select name="" id="" class="appearance-none outline-none w-full rounded-full ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300" required>
+                        <select name="property_type" id="property_type" class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300" required>
                             <option value="" hidden disabled selected>Select property type</option>
                             <option value="1">House</option>
                         </select>
-                        <img src="{{ asset('assets/images/icons/arrow-down.svg') }}"" class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
+                        <img src="{{ asset('assets/images/icons/arrow-down.svg') }}" class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
                     </label>
                 </div>
-                <button type="submit" class="group rounded-full border py-[14px] px-5 flex items-center bg-tedja-green mt-auto">
-                    <span class="font-semibold text-nowrap">Find Houses</span>
+                <button type="submit" class="group rounded-xl border py-[14px] px-5 flex items-center bg-tedja-blue2 mt-auto">
+                    <span class="font-semibold text-nowrap text-white">Find Houses</span>
                 </button>
             </form>
         </header>
@@ -104,118 +96,28 @@
             </div>
             <div class="swiper w-full overflow-x-hidden">
                 <div class="swiper-wrapper">
+                @forelse ($categories as $category)
                     <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
+                        <a href="{{ route('front.category', $category->slug) }}" class="card">
                             <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
                                 <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-1..png') }}"') }}"" class="w-full h-full object-cover" alt="thumbnails">
+                                    <img src="{{ Storage::url($category->photo) }}" class="w-full h-full object-cover" alt="thumbnails">
                                 </div>
                                 <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
+                                    <h3 class="font-bold text-lg">
+                                        {{ $category->name }}
+                                    </h3>
                                     <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
+                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}" class="size-5 flex shrink-0" alt="icon">
+                                        <p class="font-semibold text-sm">{{ $category->houses->count() }}</p>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
-                            <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-2.png') }}"" class="w-full h-full object-cover" alt="thumbnails">
-                                </div>
-                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
-                                    <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
-                            <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-3.png') }}"" class="w-full h-full object-cover" alt="thumbnails">
-                                </div>
-                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
-                                    <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
-                            <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-4.png') }}"" class="w-full h-full object-cover" alt="thumbnails">
-                                </div>
-                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
-                                    <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
-                            <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-2.png') }}"" class="w-full h-full object-cover" alt="thumbnails">
-                                </div>
-                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
-                                    <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
-                            <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-4.png') }}"" class="w-full h-full object-cover" alt="thumbnails">
-                                </div>
-                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
-                                    <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                        <a href="category.html" class="card">
-                            <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ asset('assets/images/thumbnails/thumbnails-3.png') }}"" class="w-full h-full object-cover" alt="thumbnails">
-                                </div>
-                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                    <h3 class="font-bold text-lg">Beaches</h3>
-                                    <div class="flex items-center gap-[6px]">
-                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"" class="size-5 flex shrink-0" alt="icon">
-                                        <p class="font-semibold text-sm">183,498 Houses</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                @empty
+                    <p class="px-[75px]">Belum ada kategori yang tersedia.</p>
+                @endforelse
                 </div>
             </div>
         </section>
@@ -232,791 +134,16 @@
                         <div class="content flex flex-col gap-[30px] pt-[30px]">
                             <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
                                 <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
+                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0" alt="star">
+                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0" alt="star">
+                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0" alt="star">
+                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0" alt="star">
+                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0" alt="star">
                                 </div>
                                 <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
                                 <div class="flex items-center gap-[14px]">
                                     <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pt-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider slide-down w-[230px] h-max flex flex-col flex-nowrap shrink-0">
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pb-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pb-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider slide-up w-[230px] h-max flex flex-col flex-nowrap shrink-0">
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pt-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pt-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider slide-down w-[230px] h-max flex flex-col flex-nowrap shrink-0">
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pb-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h-max">
-                        <div class="content flex flex-col gap-[30px] pb-[30px]">
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-2.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-3.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-4.png') }}"" class="w-full h-full object-cover" alt="photo profile">
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold">Sarina Dwi</p>
-                                        <p class="text-sm text-tedja-secondary">House Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card flex flex-col w-full rounded-[30px] border border-tedja-border bg-white p-4 gap-[14px]">
-                                <div class="flex">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                    <img src="{{ asset('assets/images/icons/Star 1.svg') }}"" class="flex shrink-0" alt="star">
-                                </div>
-                                <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR langsung beres</p>
-                                <div class="flex items-center gap-[14px]">
-                                    <div class="flex size-[60px] rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/images/photos/profile-5.png') }}"" class="w-full h-full object-cover" alt="photo profile">
+                                        <img src="{{ asset('assets/images/photos/profile.png') }}" class="w-full h-full object-cover" alt="photo profile">
                                     </div>
                                     <div>
                                         <p class="font-semibold">Sarina Dwi</p>
@@ -1029,7 +156,6 @@
                 </div>
             </div>
         </section>
-
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="{{ asset('js/home.js') }}"></script>
     </body>
