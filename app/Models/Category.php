@@ -16,6 +16,12 @@ class Category extends Model
     'photo',
 ];
 
+public function index()
+{
+    $categories = Category::with('houses')->get();
+
+    return view('front.index', compact('categories'));
+}
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;

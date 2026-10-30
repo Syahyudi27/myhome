@@ -51,6 +51,7 @@ class HouseResource extends Resource
                                             ->label('thumbnail')
                                             ->image()
                                             ->helperText('Contoh: Gunakan foto tampak depan rumah (facade) dengan pencahayaan terang/pagi hari. Hindari foto blur atau foto ruangan dalam.')    
+                                            ->visibility('public')
                                             ->directory('houses/thumbnail')
                                             ->required()
                                             ->columnSpanFull(),

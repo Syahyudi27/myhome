@@ -101,7 +101,7 @@
                         <a href="{{ route('front.category', $category->slug) }}" class="card">
                             <div class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
                                 <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ Storage::url($category->photo) }}" class="w-full h-full object-cover" alt="thumbnails">
+                                    <img src="{{ Storage::disk('public')->url($category->photo) }}" class="w-full h-full object-cover" alt="thumbnails">
                                 </div>
                                 <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
                                     <h3 class="font-bold text-lg">

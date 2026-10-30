@@ -11,19 +11,28 @@ class House extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
+        'thumbnail',
+        'category_id',
+        'listing_type',
         'name',
         'slug',
-        'thumbnail',
-        'about',
         'price',
         'bedroom',
         'bathroom',
-        'certificate',
-        'electric',
+        'garage',
+        'floors',
         'land_area',
         'building_area',
-        'category_id',
-        'city_id'
+        'electric',
+        'certificate',
+        'furnishing',
+        'city_id',
+        'address',
+        'latitude',
+        'longitude',
+        'about',
+        'status',
     ];
 
     public function Agent()

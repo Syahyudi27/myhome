@@ -42,6 +42,7 @@ class CategoryResource extends Resource
                         FileUpload::make('photo')
                             ->required()
                             ->image()
+                            ->disk('public')
                             ->acceptedFileTypes([
                                 'image/jpeg',
                                 'image/png',
