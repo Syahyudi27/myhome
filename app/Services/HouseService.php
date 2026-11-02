@@ -12,7 +12,8 @@ class HouseService
     {
         return [
             'categories' => Category::latest()->get(),
-            'city' => City::latest()->get(),
+            'cities' => City::latest()->get(),
+            'houses' => House::latest()->get(),
         ];
     }
 
@@ -28,10 +29,15 @@ class HouseService
             $query->where('category_id', $filters['category']);
         }
 
+        if (!empty($filters['house'])) {
+            $query->where('house_id',$filters['house']);
+        }
+
         $houses = $query->get();
 
         $category = Category::findOrFail($filters['category'] ?? null);
         $city = City::findOrFail($filters['city'] ?? null);
+        $house = House::findOrFail($filters['house'] ?? null);
 
         return compact('houses', 'category', 'city');
     }
