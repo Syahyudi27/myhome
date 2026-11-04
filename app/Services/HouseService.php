@@ -13,7 +13,7 @@ class HouseService
         return [
             'categories' => Category::latest()->get(),
             'cities' => City::latest()->get(),
-            'houses' => House::latest()->get(),
+            'listingTypes' => House::select('listing_type')->distinct()->pluck('listing_type'),
         ];
     }
 

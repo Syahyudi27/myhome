@@ -54,12 +54,12 @@
                 alt="hero image">
             <div class="absolute w-full h-full bg-tedja-black/10"></div>
         </div>
-        <form action="search-result.html"
+        <form action="{{ route('front.search') }}" method="GET"
             class="relative flex w-full max-w-[940px] rounded-xl p-5 gap-5 bg-white border border-tedja-border shadow-[0px_8px_30px_0px_#06092208] mx-auto mt-auto">
             <div class="flex flex-col w-full max-w-[241px] gap-2 h-[84px]">
                 <p class="font-semibold">Lokasi</p>
                 <label class="relative">
-                    <select name="location_id" id="location_id"
+                    <select name="city" id=""
                         class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300"
                         required>
                         <option value="" hidden disabled selected>Pilih Lokasi</option>
@@ -74,7 +74,7 @@
             <div class="flex flex-col w-full max-w-[232px] gap-2 h-[84px]">
                 <p class="font-semibold">Property</p>
                 <label class="relative">
-                    <select name="property_type" id="property_type"
+                    <select name="category" id=""
                         class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300"
                         required>
                         <option value="" hidden disabled selected>Jenis Property</option>
@@ -89,7 +89,7 @@
             <div class="flex flex-col w-full max-w-[227px] gap-2 h-[84px]">
                 <p class="font-semibold">Dijual / Disewa</p>
                 <label class="relative">
-                    <select name="category_id" id="category_id"
+                    <select name="listing_type" id=""
                         class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300"
                         required>
                         <option value="" hidden disabled selected>Dijual / Disewa</option>
