@@ -16,7 +16,7 @@ class FrontController extends Controller
     protected $houseService;
     protected $mortgageService;
 
-    public function __construct(HouseService $houseService, mortgageService $mortgageService)
+    public function __construct(HouseService $houseService, MortgageService $mortgageService)
     {
         $this->houseService = $houseService;
         $this->mortgageService = $mortgageService;

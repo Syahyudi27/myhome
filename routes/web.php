@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/search', [FrontController::class, 'search'])->name('front.search');
 Route::get('/category/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 Route::get('/details/{house:slug}', [FrontController::class, 'details'])->name('front.details');
-Route::get('/search', [FrontController::class, 'search'])->name('front.search');
+
 
 Route::match(['get', 'post'], '/mortgage/interest/payment/midtrans/notification', 
     [DashboardController::class, 'paymentMidtransNotification'])

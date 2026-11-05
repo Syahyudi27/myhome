@@ -13,11 +13,11 @@ class HouseService
         return [
             'categories' => Category::latest()->get(),
             'cities' => City::latest()->get(),
-            'listingTypes' => House::select('listing_type')->distinct()->pluck('listing_type'),
+            'houses' => House::latest()->get(),
         ];
     }
 
-    public function searchHouses(array $filters) : array
+    public function searchHouses(array $filters): array
     {
         $query = House::query();
 
@@ -29,20 +29,20 @@ class HouseService
             $query->where('category_id', $filters['category']);
         }
 
-        if (!empty($filters['house'])) {
-            $query->where('house_id',$filters['house']);
+        if (!empty($filters['listing_type'])) {
+            $query->where('listing_type', $filters['listing_type']);
         }
 
         $houses = $query->get();
 
         $category = Category::findOrFail($filters['category'] ?? null);
         $city = City::findOrFail($filters['city'] ?? null);
-        $house = House::findOrFail($filters['house'] ?? null);
+
 
         return compact('houses', 'category', 'city');
     }
 
-    public function getHouseDetails (House $house)
+    public function getHouseDetails(House $house)
     {
         $house->load(['photos', 'facilities', 'facilities.facility']);
         return $house;

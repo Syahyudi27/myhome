@@ -64,7 +64,7 @@
                         required>
                         <option value="" hidden disabled selected>Pilih Lokasi</option>
                         @foreach ($cities as $city)
-                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
                     </select>
                     <img src="{{ asset('assets/images/icons/arrow-down.svg') }}"
@@ -79,7 +79,7 @@
                         required>
                         <option value="" hidden disabled selected>Jenis Property</option>
                         @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name}}</option>
+                            <option value="{{ $category->id }}">{{ $category->name}}</option>
                         @endforeach
                     </select>
                     <img src="{{ asset('assets/images/icons/arrow-down.svg') }}"
@@ -93,9 +93,8 @@
                         class="appearance-none outline-none w-full rounded-xl ring-1 ring-tedja-black py-[14px] px-5 font-semibold invalid:font-normal focus:ring-2 focus:ring-tedja-blue transition-all duration-300"
                         required>
                         <option value="" hidden disabled selected>Dijual / Disewa</option>
-                        @foreach ($houses as $house)
-                        <option value="{{ $house->id }}">{{ $house->listing_type }}</option>
-                        @endforeach
+                        <option value="sale">jual</option>
+                        <option value="rent">sewa</option>
                     </select>
                     <img src="{{ asset('assets/images/icons/arrow-down.svg') }}"
                         class="absolute size-5 transform -translate-y-1/2 top-1/2 right-5" alt="icon">
@@ -123,30 +122,30 @@
         <div class="swiper w-full overflow-x-hidden">
             <div class="swiper-wrapper">
                 @forelse ($categories as $category)
-                <div
-                    class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
-                    <a href="{{ route('front.category', $category->slug) }}" class="card">
-                        <div
-                            class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
-                            <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                <img src="{{ Storage::disk('public')->url($category->photo) }}"
-                                    class="w-full h-full object-cover" alt="thumbnails">
-                            </div>
-                            <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
-                                <h3 class="font-bold text-lg">
-                                    {{ $category->name }}
-                                </h3>
-                                <div class="flex items-center gap-[6px]">
-                                    <img src="{{ asset('assets/images/icons/house-2.svg') }}"
-                                        class="size-5 flex shrink-0" alt="icon">
-                                    <p class="font-semibold text-sm">{{ $category->houses->count() }}</p>
+                    <div
+                        class="swiper-slide !w-fit py-0.5 first-of-type:pl-[calc(((100%-1280px)/2)+75px)] last-of-type:pr-[calc(((100%-1280px)/2)+75px)]">
+                        <a href="{{ route('front.category', $category->slug) }}" class="card">
+                            <div
+                                class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
+                                <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
+                                    <img src="{{ Storage::disk('public')->url($category->photo) }}"
+                                        class="w-full h-full object-cover" alt="thumbnails">
+                                </div>
+                                <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
+                                    <h3 class="font-bold text-lg">
+                                        {{ $category->name }}
+                                    </h3>
+                                    <div class="flex items-center gap-[6px]">
+                                        <img src="{{ asset('assets/images/icons/house-2.svg') }}"
+                                            class="size-5 flex shrink-0" alt="icon">
+                                        <p class="font-semibold text-sm">{{ $category->houses->count() }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 @empty
-                <p class="px-[75px]">Belum ada kategori yang tersedia.</p>
+                    <p class="px-[75px]">Belum ada kategori yang tersedia.</p>
                 @endforelse
             </div>
         </div>
