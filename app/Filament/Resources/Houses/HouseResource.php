@@ -48,7 +48,7 @@ class HouseResource extends Resource
                                 Hidden::make('user_id'),
 
                                 FileUpload::make('thumbnail')
-                                            ->label('thumbnail')
+                                            ->label('Thumbnail')
                                             ->image()
                                             ->helperText('Contoh: Gunakan foto tampak depan rumah (facade) dengan pencahayaan terang/pagi hari. Hindari foto blur atau foto ruangan dalam.')    
                                             ->visibility('public')
@@ -64,12 +64,9 @@ class HouseResource extends Resource
                                     ->preload()
                                     ->required(),
 
-                                Select::make('listing_type')
-                                    ->label('Tipe Iklan')
-                                    ->options([
-                                        'sale' => 'Dijual',
-                                        'rent' => 'Disewakan',
-                                    ])
+                                Select::make('listing_type_id')
+                                    ->label('Jual / Sewa')
+                                    ->relationship('listing_type', 'name')
                                     ->required(),
 
                                 TextInput::make('name')

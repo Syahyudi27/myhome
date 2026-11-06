@@ -1,65 +1,25 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="{{ asset('css/output.css') }}" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-</head>
-    <body>
-          <nav class="relative w-full flex items-center justify-center px-[75px] sm:text-center">
-        <div
-            class="fixed top-0 flex items-center justify-between w-full max-w-[1130px] rounded-xl p-4 bg-white mt-[30px] z-30">
-            <a href="index.html" class="flex shrink-0">
-                <img src="{{ asset('assets/images/logos/logo-black.svg') }}" alt="logo">
-            </a>
-            <ul class="flex items-center gap-[30px]">
-                <li class="group active">
-                    <a href="index.html"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Home</a>
-                </li>
-                <li class="group">
-                    <a href="category.html"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Browse</a>
-                </li>
-                <li class="group">
-                    <a href="#"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Rewards</a>
-                </li>
-                <li class="group">
-                    <a href="#"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Stories</a>
-                </li>
-            </ul>
-            <div class="flex items-center gap-3">
-                <a href="{{route('login')}}"
-                    class="group rounded-xl border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
-                    <span class="font-semibold group-hover:text-white transition-all duration-300">Sign In</span>
-                </a>
-                <a href="{{route('register')}}"
-                    class="group rounded-xl border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
-                    <span class="font-semibold group-hover:text-white transition-all duration-300">Sign Up</span>
-                </a>
-            </div>
+@extends('layouts.master')
+@section('title', 'Search Home Page')
+@section('content')
+    <x-nav-home />
+    <div class="mt-[164px] flex flex-col gap-[6px] text-center items-center">
+        <h1 class="font-bold text-4xl leading-[54px]">{{$category->name}} di {{$city->name}}</h1>
+        <div class="flex items-center gap-[6px]">
+            <img src="assets/images/icons/building-3.svg" class="size-6 flex shrink-0" alt="icon">
+            <p class="font-semibold">Available {{ $houses->count() }} Properties</p>
         </div>
-    </nav>
-        <div class="mt-[164px] flex flex-col gap-[6px] text-center items-center">
-            <h1 class="font-bold text-4xl leading-[54px]">{{$category->name}} di {{$city->name}}</h1>
-            <div class="flex items-center gap-[6px]">
-                <img src="assets/images/icons/building-3.svg" class="size-6 flex shrink-0" alt="icon">
-                <p class="font-semibold">Available {{ $houses->count() }} Properties</p>
-            </div>
-        </div>
-        <main class="grid grid-cols-3 w-full max-w-[1280px] px-[75px] gap-[30px] mx-auto my-[50px]">
-        @forelse($houses as $house)    
-        <a href="{{route('front.details', $house->slug)}}" class="card">
-                <div class="flex flex-col rounded-[30px] ring-1 ring-tedja-border p-[10px] pb-5 gap-3 bg-white hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
+    </div>
+    <main class="grid grid-cols-3 w-full max-w-[1280px] px-[75px] gap-[30px] mx-auto my-[50px]">
+        @forelse($houses as $house)
+            <a href="{{route('front.details', $house->slug)}}" class="card">
+                <div
+                    class="flex flex-col rounded-[30px] ring-1 ring-tedja-border p-[10px] pb-5 gap-3 bg-white hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
                     <div class="thumbnail-container relative w-full h-[240px] rounded-[30px] overflow-hidden">
-                        <img src="{{ Storage::disk('public')->url($category->photo) }}" class="w-full h-full object-cover" alt="thumbnail">
+                        <img src="{{ Storage::disk('public')->url($category->photo) }}" class="w-full h-full object-cover"
+                            alt="thumbnail">
                         <button class="absolute top-5 right-5">
-                            <img src="assets/images/icons/heart-white-fill.svg" class="size-[50px] flex shrink-0" alt="icon whishlist">
+                            <img src="assets/images/icons/heart-white-fill.svg" class="size-[50px] flex shrink-0"
+                                alt="icon whishlist">
                         </button>
                     </div>
                     <div class="flex flex-col gap-[18px] px-[10px]">
@@ -88,24 +48,24 @@
                                 <img src="assets/images/icons/maximize-3.svg" class="size-5 flex shrink-0" alt="icon">
                                 <p class="font-semibold text-sm">{{$house->land_area}}</p>
                             </div>
-                            
-                        </div>
-                        <div class="flex items-center rounded-[14px] border border-green-400 p-[10px] gap-[6px]">
-    <img src="{{ asset('assets/images/icons/whatsapp-svgrepo-com.svg') }}"
-         class="size-5 shrink-0"
-         alt="WhatsApp">
 
-    <p class="font-semibold text-sm text-green-600">
-        089662318270
-    </p>
-</div>
                         </div>
                     </div>
                 </div>
+                </div>
+                </div>
             </a>
         @empty
-        belum ada data
+            belum ada data
         @endforelse
-        </main>
-    </body>
-</html>
+    </main>
+@endsection
+
+@push('after-styles')
+
+@endpush
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+@push('after-scipts')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
+@endpush

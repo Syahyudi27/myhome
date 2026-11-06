@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\House;
+use App\Models\ListingType;
 
 class HouseService
 {
@@ -14,6 +15,7 @@ class HouseService
             'categories' => Category::latest()->get(),
             'cities' => City::latest()->get(),
             'houses' => House::latest()->get(),
+            'listingtype' => ListingType::latest()->get(),
         ];
     }
 
@@ -29,14 +31,15 @@ class HouseService
             $query->where('category_id', $filters['category']);
         }
 
-        if (!empty($filters['listing_type'])) {
-            $query->where('listing_type', $filters['listing_type']);
+        if (!empty($filters['listing'])) {
+            $query->where('listing_type_id', $filters['listing']);
         }
 
         $houses = $query->get();
 
         $category = Category::findOrFail($filters['category'] ?? null);
         $city = City::findOrFail($filters['city'] ?? null);
+        $listing = ListingType::findOrFail($filters['listing'] ?? null);
 
 
         return compact('houses', 'category', 'city');

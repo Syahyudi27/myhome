@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('thumbnail');
             $table->text('about');
 
-            // Menggunakan unsignedBigInteger untuk nominal harga besar
+            // Nominal harga
             $table->unsignedBigInteger('price');
 
             // Spesifikasi Ruangan & Bangunan
@@ -39,14 +39,14 @@ return new class extends Migration {
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
 
-            // Status & Tipe (Menggunakan string biasa, bukan enum)
+            // Status & Tipe
             $table->string('furnishing');
-            $table->string('listing_type');
             $table->string('status');
 
-            // Relasi Kategori & Kota
+            // Relasi Kategori, Kota, & Listing Type
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('listing_type_id')->nullable()->constrained()->nullOnDelete();
 
             $table->timestamps();
             $table->softDeletes();

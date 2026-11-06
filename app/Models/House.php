@@ -14,7 +14,7 @@ class House extends Model
         'user_id',
         'thumbnail',
         'category_id',
-        'listing_type',
+        'listing_type_id',
         'name',
         'slug',
         'price',
@@ -54,6 +54,11 @@ class House extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+       public function listing_type()
+    {
+        return $this->belongsTo(ListingType::class);
     }
 
     public function photos()
