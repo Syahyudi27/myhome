@@ -16,7 +16,8 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use Str;
+use Illuminate\Support\Str;
+
 use UnitEnum;
 
 class ListingTypeResource extends Resource
@@ -39,12 +40,13 @@ class ListingTypeResource extends Resource
                         TextInput::make('name')
                             ->maxLength(255)
                             ->required()
+                            ->live(onBlur:true)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->columnSpanFull(),
                         TextInput::make('slug')
                             ->label('Slug URL')
                             ->required()
-                             ->columnSpanFull()
+                            ->columnSpanFull()
                             ->unique(ignoreRecord: true),
                     ])
             ]);

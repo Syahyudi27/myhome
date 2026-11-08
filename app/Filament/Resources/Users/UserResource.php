@@ -10,6 +10,7 @@ use App\Filament\Resources\Users\Tables\UsersTable;
 use App\Models\User;
 use BackedEnum;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Fieldset;
 use UnitEnum;
 use Filament\Resources\Resource;
@@ -31,14 +32,23 @@ class UserResource extends Resource
     {
         return $schema
             ->components([
+                TextInput::make('name')
+                    ->required(),
+                TextInput::make('phone')
+                    ->required(),
+                TextInput::make('email')
+                    ->required(),
+                TextInput::make('password'),
+                TextInput::make('Role')
+                ->relationship('role', 'name')
+                ->required(),
                 FileUpload::make('avatar_url')
                     ->label('My Avatar, ( Maks. 2 MB')
-                    ->avatar() // Mengubah tampilan input menjadi bulat khusus foto profil/avatar
+                    ->required()
                     ->image() // Memvalidasi hanya file gambar
                     ->directory('avatars') // Folder penyimpanan di storage/app/public/avatars
                     ->maxSize(2048) // Maksimal ukuran file 2 MB (2048 KB)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']) // Format file yang diizinkan
-                    ->circleCropper(), // (Opsional) Fitur crop gambar lingkaran sebelum disimpan
             ]);
     }
 

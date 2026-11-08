@@ -17,6 +17,7 @@
                     <a href="#" class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Stories</a>
                 </li>
             </ul>
+            @guest
             <div class="flex items-center gap-3">
                 <a href="{{ route('login') }}" class="group rounded-xl border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
                     <span class="font-semibold group-hover:text-white transition-all duration-300">Sign In</span>
@@ -25,5 +26,37 @@
                     <span class="font-semibold group-hover:text-white transition-all duration-300">Sign Up</span>
                 </a>
             </div>
+            @endguest
+
+            @auth
+            <button id="Profile" class="relative">
+                    <div class="flex items-center gap-[14px]">
+                        <div class="flex text-right flex-col gap-0.5">
+                            <p class="text-sm text-tedja-secondary">Howdy,</p>
+                            <p class="font-semibold">{{ Auth::user()->name }}</p>
+                        </div>
+                        <div class="flex rounded-full size-[50px] overflow-hidden">
+                            <img src="{{ Storage::url(Auth::user()->name) }}" class="w-full h-full object-cover" alt="photo">
+                        </div>
+                    </div>
+                    <ul class="hidden absolute top-full mt-[10px] right-0 flex flex-col w-[170px] shrink-0 h-fit text-left rounded-xl border border-tedja-border py-5 px-5 bg-white shadow-[0px_10px_30px_0px_#B8B8B840] gap-[14px]">
+                        <li>
+                            <a href="#" class="hover:text-tedja-blue transition-all duration-300">Rewards</a>
+                        </li>
+                        <li>
+                            <a href="my-mortgages.html" class="hover:text-tedja-blue transition-all duration-300">My Mortgages</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:text-tedja-blue transition-all duration-300">Learn Property</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:text-tedja-blue transition-all duration-300">Settings</a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="hover:text-tedja-blue transition-all duration-300">Logout</a>
+                        </li>
+                    </ul>
+                </button>
+            @endauth
         </div>
     </nav>

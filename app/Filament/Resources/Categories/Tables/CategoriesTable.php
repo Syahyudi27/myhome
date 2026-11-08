@@ -19,9 +19,9 @@ class CategoriesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('photo'),
-                TextColumn::make('name')
+                 TextColumn::make('name')
                 ->searchable(),
+                ImageColumn::make('photo'),
             ])
             ->filters([
                 TrashedFilter::make(),

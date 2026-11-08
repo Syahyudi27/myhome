@@ -73,7 +73,7 @@ class HouseResource extends Resource
                                     ->label('Nama Properti')
                                     ->placeholder('Contoh: Rumah Minimalis Modern Cluster A')
                                     ->required()
-                                    ->live(onBlur: true)
+                                    ->live(onBlur:true)
                                     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                                 TextInput::make('slug')
