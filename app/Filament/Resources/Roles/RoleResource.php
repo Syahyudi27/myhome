@@ -7,7 +7,6 @@ use App\Filament\Resources\Roles\Pages\EditRole;
 use App\Filament\Resources\Roles\Pages\ListRoles;
 use App\Filament\Resources\Roles\Schemas\RoleForm;
 use App\Filament\Resources\Roles\Tables\RolesTable;
-use App\Models\Role;
 use BackedEnum;
 use UnitEnum;
 use Filament\Resources\Resource;

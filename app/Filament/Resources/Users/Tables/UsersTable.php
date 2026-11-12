@@ -22,15 +22,14 @@ class UsersTable
                 TextColumn::make('phone'),
                 TextColumn::make('photo'),
                 TextColumn::make('email'),
+                TextColumn::make('role'),
             ])
             ->filters([
                 //TrashedFilter::make(),
             ])
             ->recordActions([
                 EditAction::make(),
-                ViewAction::make(),
-
-                          
+                ViewAction::make(),             
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
