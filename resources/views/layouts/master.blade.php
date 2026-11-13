@@ -14,5 +14,5 @@
 <body>
     @yield('content')
     <script src="{{ asset('js/navbar-dropdown.js') }}"></script>
-    @stack('after-scipts')
+    @stack('after-scripts')
 </body>

@@ -28,7 +28,7 @@ public function index()
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function houses()
+    public function house()
     {
         return $this->hasMany(House::class);
     }

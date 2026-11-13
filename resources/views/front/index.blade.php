@@ -101,7 +101,7 @@
                                     <div class="flex items-center gap-[6px]">
                                         <img src="{{ asset('assets/images/icons/house-2.svg') }}" class="size-5 flex shrink-0"
                                             alt="icon">
-                                        <p class="font-semibold text-sm">{{ $category->houses->count() }}</p>
+                                        <p class="font-semibold text-sm">{{ $category->house->count() }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 @endpush
 
-@push('after-scipts')
+@push('after-scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/home.js') }}"></script>
 @endpush
