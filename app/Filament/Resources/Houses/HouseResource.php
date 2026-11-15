@@ -48,13 +48,13 @@ class HouseResource extends Resource
                                 Hidden::make('user_id'),
 
                                 FileUpload::make('thumbnail')
-                                            ->label('Thumbnail')
-                                            ->image()
-                                            ->helperText('Contoh: Gunakan foto tampak depan rumah (facade) dengan pencahayaan terang/pagi hari. Hindari foto blur atau foto ruangan dalam.')    
-                                            ->visibility('public')
-                                            ->directory('houses/thumbnail')
-                                            ->required()
-                                            ->columnSpanFull(),
+                                    ->label('Thumbnail')
+                                    ->image()
+                                    ->helperText('Contoh: Gunakan foto tampak depan rumah (facade) dengan pencahayaan terang/pagi hari. Hindari foto blur atau foto ruangan dalam.')
+                                    ->visibility('public')
+                                    ->directory('houses/thumbnail')
+                                    ->required()
+                                    ->columnSpanFull(),
 
 
                                 Select::make('category_id')
@@ -73,7 +73,7 @@ class HouseResource extends Resource
                                     ->label('Nama Properti')
                                     ->placeholder('Contoh: Rumah Minimalis Modern Cluster A')
                                     ->required()
-                                    ->live(onBlur:true)
+                                    ->live(onBlur: true)
                                     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                                 TextInput::make('slug')
@@ -171,6 +171,9 @@ class HouseResource extends Resource
                                 TextInput::make('longitude')
                                     ->numeric()
                                     ->placeholder('Contoh: 106.81666670'),
+                                Select::make('facility_id')
+                                    ->label('Facilitas')
+                                    ->relationship('facilities', 'name'),
                             ])->columns(2),
 
                         // TAB 4: MEDIA, DESKRIPSI & STATUS

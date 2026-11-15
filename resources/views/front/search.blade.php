@@ -5,7 +5,7 @@
     <div class="mt-[164px] flex flex-col gap-[6px] text-center items-center">
         <h1 class="font-bold text-4xl leading-[54px]">{{$category->name}} di {{$city->name}}</h1>
         <div class="flex items-center gap-[6px]">
-            <img src="assets/images/icons/building-3.svg" class="size-6 flex shrink-0" alt="icon">
+            <img src="{{ assets('asset/images/icons/building-3.svg' }}" class="size-6 flex shrink-0" alt="icon">
             <p class="font-semibold">Available {{ $houses->count() }} Properties</p>
         </div>
     </div>
@@ -18,7 +18,7 @@
                         <img src="{{ Storage::disk('public')->url($category->photo) }}" class="w-full h-full object-cover"
                             alt="thumbnail">
                         <button class="absolute top-5 right-5">
-                            <img src="assets/images/icons/heart-white-fill.svg" class="size-[50px] flex shrink-0"
+                            <img src="{{ assets('asset/images/icons/heart-white-fill.svg' }}" class="size-[50px] flex shrink-0"
                                 alt="icon whishlist">
                         </button>
                     </div>
@@ -33,19 +33,19 @@
                         <hr class="border-tedja-border">
                         <div class="grid grid-cols-2 gap-y-[18px] gap-x-3">
                             <div class="flex items-center rounded-[14px] border border-tedja-border p-[10px] gap-[6px]">
-                                <img src="assets/images/icons/slider-vertical.svg" class="size-5 flex shrink-0" alt="icon">
+                                <img src="{{ assets('asset/images/icons/slider-vertical.svg' }}" class="size-5 flex shrink-0" alt="icon">
                                 <p class="font-semibold text-sm">{{ $house->bedroom}}</p>
                             </div>
                             <div class="flex items-center rounded-[14px] border border-tedja-border p-[10px] gap-[6px]">
-                                <img src="assets/images/icons/slider-horizontal.svg" class="size-5 flex shrink-0" alt="icon">
+                                <img src="{{ assets('asset/images/icons/slider-horizontal.svg' }}" class="size-5 flex shrink-0" alt="icon">
                                 <p class="font-semibold text-sm">{{$house->bathroom}}</p>
                             </div>
                             <div class="flex items-center rounded-[14px] border border-tedja-border p-[10px] gap-[6px]">
-                                <img src="assets/images/icons/note-favorite.svg" class="size-5 flex shrink-0" alt="icon">
+                                <img src="{{ assets('asset/images/icons/note-favorite.svg' }}" class="size-5 flex shrink-0" alt="icon">
                                 <p class="font-semibold text-sm">{{$house->certificate}}</p>
                             </div>
                             <div class="flex items-center rounded-[14px] border border-tedja-border p-[10px] gap-[6px]">
-                                <img src="assets/images/icons/maximize-3.svg" class="size-5 flex shrink-0" alt="icon">
+                                <img src="{{ assets('asset/images/icons/maximize-3.svg' }}" class="size-5 flex shrink-0" alt="icon">
                                 <p class="font-semibold text-sm">{{$house->land_area}}</p>
                             </div>
 
