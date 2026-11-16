@@ -171,9 +171,9 @@ class HouseResource extends Resource
                                 TextInput::make('longitude')
                                     ->numeric()
                                     ->placeholder('Contoh: 106.81666670'),
-                                Select::make('facility_id')
-                                    ->label('Facilitas')
-                                    ->relationship('facilities', 'name'),
+                                // Select::make('facility_id')
+                                //     ->label('Facilitas')
+                                //     ->relationship('facilities', 'name'),
                             ])->columns(2),
 
                         // TAB 4: MEDIA, DESKRIPSI & STATUS

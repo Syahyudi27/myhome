@@ -199,39 +199,33 @@
                 </div>
             </div>
             <!-- <div id="Location" class="flex flex-col gap-[14px]">
-                    <h2 class="font-semibold text-[22px] leading-[33px]">Strategic Location</h2>
-                    <div class="overflow-hidden w-full h-[320px]">
-                        <div id="my-map-display" class="h-full w-full max-w-[none] bg-none">
-                            <iframe class="h-full w-full border-0" frameborder="0"
-                                src="https://www.google.com/maps/embed/v1/place?q={{ $houseDetails->city->name }}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
-                        </div>
+                            <h2 class="font-semibold text-[22px] leading-[33px]">Strategic Location</h2>
+                            <div class="overflow-hidden w-full h-[320px]">
+                                <div id="my-map-display" class="h-full w-full max-w-[none] bg-none">
+                                    <iframe class="h-full w-full border-0" frameborder="0"
+                                        src="https://www.google.com/maps/embed/v1/place?q={{ $houseDetails->city->name }}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                                </div>
 
-                    </div>
-                </div> -->
+                            </div>
+                        </div> -->
+
+
 
             <div id="Location" class="flex flex-col gap-[14px]">
-                <h2 class="font-semibold text-[22px] leading-[33px]">Strategic Location</h2>
+                <h2 class="font-semibold text-[22px] leading-[33px]">
+                    Strategic Location
+                </h2>
 
-                <!-- Tambahkan 'relative' & 'group' pada pembungkus peta -->
-                <div class="relative group overflow-hidden w-full h-[320px] rounded-2xl border border-gray-200">
-                    <div id="my-map-display" class="h-full w-full max-w-[none] bg-none">
-                        <iframe class="h-full w-full border-0" frameborder="0" loading="lazy"
-                            src="https://maps.google.com/maps?q={{ urlencode($houseDetails->city->name) }}&z=13&output=embed">
-                        </iframe>
-                    </div>
-
-                    <!-- Overlay Link: Mengarahkan ke WhatsApp saat peta diklik -->
-                    <a href="https://wa.me/6281234567890?text={{ urlencode('Halo, saya tertarik dengan properti di ' . $houseDetails->city->name . ' (' . ($houseDetails->name ?? '') . '). Boleh minta titik lokasi persis atau jadwalkan survei?') }}"
-                        target="_blank" rel="noopener noreferrer"
-                        class="absolute inset-0 z-10 flex items-end justify-center p-4 bg-black/5 hover:bg-black/25 transition duration-200 cursor-pointer">
-
-                        <span
-                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/95 group-hover:bg-emerald-600 text-gray-900 group-hover:text-white text-xs sm:text-sm font-semibold shadow-md transition">
-                            Klik Peta untuk Tanya Lokasi & Survei via WhatsApp
-                        </span>
-                    </a>
+                <div class="overflow-hidden w-full h-[320px] rounded-[14px]">
+                    <div id="map" class="h-full w-full" data-latitude="{{ $houseDetails->latitude }}"
+                        data-longitude="{{ $houseDetails->longitude }}" data-name="{{ $houseDetails->name }}"
+                        data-price="Rp {{ number_format($houseDetails->price, 0, ',', '.') }}"
+                        data-city="{{ $houseDetails->city->name ?? '-' }}"></div>
                 </div>
             </div>
+
+
+
         </div>
         <div class="flex flex-col w-[400px] shrink-0 h-fit rounded-[30px] border border-tedja-border p-5 gap-5 bg-white">
             <p class="font-bold text-[38px] leading-[57px] text-center text-tedja-blue">

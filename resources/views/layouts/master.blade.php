@@ -12,6 +12,12 @@
    
 </head>
 <body>
+
+
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
     @yield('content')
     <script src="{{ asset('js/navbar-dropdown.js') }}"></script>
     @stack('after-scripts')
