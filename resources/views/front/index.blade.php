@@ -155,6 +155,7 @@
             </div>
         </div>
     </section>
+<x-footer />
 @endsection
 
 @push('after-styles')
