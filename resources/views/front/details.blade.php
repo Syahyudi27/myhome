@@ -175,17 +175,22 @@
         
         <!-- Sidebar Kontak Agen / Pemilik -->
         <div class="flex flex-col w-[400px] shrink-0 h-fit rounded-[30px] border border-tedja-border p-5 gap-5 bg-white">
-            <p class="font-bold text-[38px] leading-[57px] text-center text-tedja-blue">Rp 289.000.000</p>
-                <hr class="border-x-tedja-border">
+            <p class="font-bold text-[38px] leading-[57px] text-center text-tedja-blue">
+                Rp {{ number_format($houseDetails->price ?? 0, 0, ',', '.') }}
+            </p>
+            <hr class="border-tedja-border">
             <!-- Profil Agen / Pemilik -->
             <div class="flex items-center gap-[14px] pb-4 border-b border-tedja-border">
                 <div class="size-[60px] rounded-full overflow-hidden shrink-0 border border-tedja-border bg-gray-100">
-                    @if($houseDetails->user?->avatar)
-                        <img src="{{ Storage::url($houseDetails->user->avatar) }}" class="w-full h-full object-cover"
+                    @php
+                        $agentPhoto = $houseDetails->user?->photo ?? $houseDetails->user?->avatar;
+                    @endphp
+                    @if($agentPhoto)
+                        <img src="{{ Storage::url($agentPhoto) }}" class="w-full h-full object-cover"
                             alt="{{ $houseDetails->user->name }}">
                     @else
                         <!-- Fallback foto default jika user belum upload avatar -->
-                        <img src="{{ asset('assets/images/photos/default-avatar.png') }}" class="w-full h-full object-cover"
+                        <img src="{{ asset('assets/images/icons/default-avatar.svg') }}" class="w-full h-full object-cover"
                             alt="Default Avatar">
                     @endif
                 </div>
@@ -200,6 +205,12 @@
             </div>
             
             <!-- Kartu Tombol WhatsApp -->
+            @php
+                $waNumber = preg_replace('/[^0-9]/', '', $houseDetails->user?->phone ?? $houseDetails->Agent ?? '');
+                if (str_starts_with($waNumber, '0')) {
+                    $waNumber = '62' . substr($waNumber, 1);
+                }
+            @endphp
             <div
                 class="group flex items-center justify-between rounded-[20px] ring-1 ring-tedja-border p-4 bg-white hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
                 <div class="flex items-center gap-[14px]">
@@ -212,7 +223,7 @@
                         <p class="text-xs text-tedja-secondary">Fast Response</p>
                     </div>
                 </div>
-                <a href="https://wa.me/{{ $houseDetails->Agent }}?text={{ urlencode('Halo ' . ($houseDetails->user?->name ?? '') . ', saya tertarik dengan properti ' . $houseDetails->name . ' (Rp ' . number_format($houseDetails->price ?? 0, 0, ',', '.') . '). Bisa info lebih lanjut?') }}"
+                <a href="https://wa.me/{{ $waNumber }}?text={{ urlencode('Halo ' . ($houseDetails->user?->name ?? '') . ', saya tertarik dengan properti ' . $houseDetails->name . ' (Rp ' . number_format($houseDetails->price ?? 0, 0, ',', '.') . '). Bisa info lebih lanjut?') }}"
                     target="_blank" rel="noopener noreferrer"
                     class="rounded-full py-[6px] px-3 bg-tedja-green font-semibold text-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
                     Chat WhatsApp

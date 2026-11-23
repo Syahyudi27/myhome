@@ -2,7 +2,7 @@
 @section('title', 'Homi Home Page')
 @section('content')
     <!-- Navigation Bar -->
-    <x-nav-home />>
+    <x-nav-home />
         <div class="mt-[164px] flex flex-col gap-[6px] text-center items-center">
             <h1 class="font-bold text-4xl leading-[54px]">Browse {{ $category->name }}</h1>
             <div class="flex items-center gap-[6px]">

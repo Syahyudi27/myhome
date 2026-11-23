@@ -2,8 +2,7 @@
     <div
         class="fixed top-0 flex items-center justify-between w-full max-w-[1130px] rounded-xl p-4 bg-white mt-[30px] z-30">
         <a href="{{ route('front.index') }}" class="flex shrink-0">
-            <!-- <img src="{{ asset('assets/images/logos/logo-black.svg') }}" alt="logo"> -->
-             <p>tanpa nama</p>
+            <img src="{{ asset('assets/images/logos/hunivora-logo.svg') }}" alt="logo"  class="h-10 w-auto object-contain">
         </a>
         <ul class="flex items-center gap-[30px]">
             <li class="group active">
