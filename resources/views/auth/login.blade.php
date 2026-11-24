@@ -24,6 +24,17 @@
                             <input type="password" name="password" class="appearance-none outline-none w-full rounded-full ring-1 ring-tedja-border py-[14px] pl-[54px] px-5 font-semibold placeholder:font-normal focus:ring-1 focus:ring-tedja-blue transition-all duration-300" placeholder="Type your password" required>
                         </label>
                         <x-input-error :messages="$errors->get('password')" class="text-sm text-tedja-red" />
+                        <div class="mt-4 w-full">
+    <div class="flex justify-center">
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+    </div>
+
+    @error('g-recaptcha-response')
+        <div class="mt-2 text-sm text-red-600 dark:text-red-400 text-center">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
                         <a href="{{ Route::has('password.request') ? route('password.request') : '#' }}" class="hover:underline">Forgot my password</a>
                     </div>
                     <button type="submit" class="rounded-full py-[14px] px-5 bg-tedja-green w-full text-center font-semibold">Sign In to Manage Mortgages</button>
@@ -57,3 +68,7 @@
             </div>
         </main>
 @endsection
+
+@push('after-scripts')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endpush

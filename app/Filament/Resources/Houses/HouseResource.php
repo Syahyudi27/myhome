@@ -8,24 +8,23 @@ use App\Filament\Resources\Houses\Pages\ListHouses;
 use App\Filament\Resources\Houses\Tables\HousesTable;
 use App\Models\House;
 use BackedEnum;
+use Filament\Facades\Filament; // [BARU]
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
-use Filament\Tables\Columns\Summarizers\Sum;
-use UnitEnum;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Filament\Schemas\Components\Utilities\Set;
-// Import Component untuk Filament v4 / v5
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Tabs\Tab;
+use UnitEnum;
 
 class HouseResource extends Resource
 {
@@ -34,6 +33,18 @@ class HouseResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-home-modern';
 
     protected static string|UnitEnum|null $navigationGroup = 'Products';
+
+    // [BARU] Filter data otomatis saat diakses dari panel agent
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        if (Filament::getCurrentPanel()?->getId() === 'agent') {
+            return $query->where('user_id', auth()->id());
+        }
+
+        return $query;
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -45,16 +56,20 @@ class HouseResource extends Resource
                         Tab::make('Informasi Utama')
                             ->icon('heroicon-o-information-circle')
                             ->schema([
-                                Hidden::make('user_id'),
+                                Hidden::make('user_id')
+                                    ->default(fn () => auth()->id()), // [DIUBAH] Set default ID user yang login
 
                                 FileUpload::make('thumbnail')
                                     ->label('Thumbnail')
                                     ->helperText('Contoh: Gunakan foto tampak depan rumah (facade) dengan pencahayaan terang/pagi hari. Hindari foto blur atau foto ruangan dalam.')
+                                    ->image() // [BARU] Pastikan hanya menerima file gambar
                                     ->visibility('public')
                                     ->directory('houses/thumbnail')
+                                    ->imageResizeMode('cover') // [BARU] Kompresi & resize otomatis
+                                    ->imageResizeTargetWidth('1280') // [BARU]
+                                    ->optimize('webp') // [BARU] Ubah ke WebP agar ringan
                                     ->required()
                                     ->columnSpanFull(),
-
 
                                 Select::make('category_id')
                                     ->label('Kategori Properti')
@@ -170,9 +185,6 @@ class HouseResource extends Resource
                                 TextInput::make('longitude')
                                     ->numeric()
                                     ->placeholder('Contoh: 106.81666670'),
-                                // Select::make('facility_id')
-                                //     ->label('Facilitas')
-                                //     ->relationship('facilities', 'name'),
                             ])->columns(2),
 
                         // TAB 4: MEDIA, DESKRIPSI & STATUS
@@ -181,15 +193,18 @@ class HouseResource extends Resource
                             ->schema([
                                 Repeater::make('photos')
                                     ->label('Galeri Foto Properti (Bisa Banyak Foto)')
-                                    ->relationship('photos') // Nama fungsi relasi hasMany di Model House
+                                    ->relationship('photos')
                                     ->schema([
                                         FileUpload::make('photo')
                                             ->label('Foto Galeri')
                                             ->image()
                                             ->directory('houses/photos')
+                                            ->imageResizeMode('cover') // [BARU]
+                                            ->imageResizeTargetWidth('1280') // [BARU]
+                                            ->optimize('webp') // [BARU]
                                             ->required(),
                                     ])
-                                    ->grid(2) // Menampilkan input foto berjejer 2 kolom
+                                    ->grid(2)
                                     ->defaultItems(1)
                                     ->addActionLabel('Tambah Foto Lainnya')
                                     ->columnSpanFull(),
@@ -221,9 +236,7 @@ class HouseResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
@@ -235,11 +248,17 @@ class HouseResource extends Resource
         ];
     }
 
+    // [DIUBAH] Batasi SoftDeletes hanya bisa diakses/restore oleh Admin
     public static function getRecordRouteBindingEloquentQuery(): Builder
     {
-        return parent::getRecordRouteBindingEloquentQuery()
-            ->withoutGlobalScopes([
+        $query = parent::getRecordRouteBindingEloquentQuery();
+
+        if (Filament::getCurrentPanel()?->getId() === 'admin') {
+            return $query->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+        }
+
+        return $query->where('user_id', auth()->id());
     }
 }

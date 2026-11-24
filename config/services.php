@@ -39,4 +39,9 @@ return [
         'key' => env('GEOAPIFY_KEY'),
     ],
 
+    'recaptcha' => [
+    'key' => env('RECAPTCHA_SITE_KEY'),
+    'secret' => env('RECAPTCHA_SECRET_KEY'),
+],
+
 ];
